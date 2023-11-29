@@ -1,0 +1,4 @@
+tailwind css
+react router dom
+react icons
+swiper 
