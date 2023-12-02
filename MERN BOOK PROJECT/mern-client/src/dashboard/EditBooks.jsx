@@ -3,7 +3,7 @@ import { useLoaderData, useParams } from 'react-router-dom'
 import { Button, Checkbox, Label, Select, TextInput, Textarea } from "flowbite-react";
 
 export const EditBooks = () => {
-  const {_id} = useParams()
+  const {id} = useParams()
   const {author,imageUrl,category,bookDescription,bookTitle,bookPdfUrl} = useLoaderData()
   
   const categories = [
@@ -47,7 +47,7 @@ export const EditBooks = () => {
     }
     console.log(updatedBookObj)
 
-  fetch(`http://localhost:3000//book/${_id}`,{
+  fetch(`http://localhost:3000/book/${id}`,{
     method:"PATCH",
     headers:{
       "Content-Type": "application/json"

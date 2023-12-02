@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Button, Checkbox, Label, Select, TextInput, Textarea } from "flowbite-react";
+import {
+  Button,
+  Checkbox,
+  Label,
+  Select,
+  TextInput,
+  Textarea,
+} from "flowbite-react";
 
 export const UploadBooks = () => {
   const categories = [
@@ -29,44 +36,51 @@ export const UploadBooks = () => {
   };
 
   //handle form submission
-  const handleSubmission = (e)=>{
-    e.preventDefault()
-    const form = e.target
+  const handleSubmission = (e) => {
+    e.preventDefault();
+    const form = e.target;
 
-    const bookTitle = form.bookTitle.value
-    const author = form.author.value
-    const imageUrl = form.imageUrl.value
-    const category = form.categoryName.value
-    const bookDescription = form.bookDescription.value
-    const bookPdfUrl = form.bookPdfUrl.value
+    const bookTitle = form.bookTitle.value;
+    const author = form.author.value;
+    const imageUrl = form.imageUrl.value;
+    const category = form.categoryName.value;
+    const bookDescription = form.bookDescription.value;
+    const bookPdfUrl = form.bookPdfUrl.value;
 
     const bookObj = {
-      bookTitle,author,imageUrl,category,bookDescription,bookPdfUrl
-    }
-    console.log(bookObj)
+      bookTitle,
+      author,
+      imageUrl,
+      category,
+      bookDescription,
+      bookPdfUrl,
+    };
+    console.log(bookObj);
 
+    // send data to db
 
-    // send data to db 
-
-    fetch('http://localhost:3000/upload-book',{
+    fetch("http://localhost:3000/upload-book", {
       method: "POST",
-      headers:{
-        "Content-type": 'application/json'
+      headers: {
+        "Content-type": "application/json",
       },
-      body: JSON.stringify(bookObj)
-    }).then(res=>res.json()).then(
-      alert('uploaded book ')
-    )
+      body: JSON.stringify(bookObj),
+    })
+      .then((res) => res.json())
+      .then(alert("uploaded book "));
 
-    form.reset()
-  }
+    form.reset();
+  };
 
   return (
     <div className="px-4 my-12">
       <h2 className="mb-8 text-3xl font-bold">Upload a Book</h2>
 
       {/* form  */}
-      <form onSubmit={handleSubmission} className="flex lg:w-[700px] flex-col flex-wrap gap-4">
+      <form
+        onSubmit={handleSubmission}
+        className="flex lg:w-[700px] flex-col flex-wrap gap-4"
+      >
         {/* 1st Row  */}
         <div className="flex gap-8">
           <div className="lg:w-1/2">
@@ -103,9 +117,7 @@ export const UploadBooks = () => {
           <div className="lg:w-1/2">
             {/* imageUrl  */}
             <div className="mb-2 block">
-              <Label 
-              htmlFor="imageUrl" 
-              value="Image URL" />
+              <Label htmlFor="imageUrl" value="Image URL" />
             </div>
             <TextInput
               id="imageUrl"
@@ -119,9 +131,7 @@ export const UploadBooks = () => {
           <div className="lg:w-1/2">
             {/* category */}
             <div className="mb-2 block">
-              <Label 
-              htmlFor="inputState" 
-              value="Book Category" />
+              <Label htmlFor="inputState" value="Book Category" />
             </div>
 
             <Select
@@ -138,45 +148,45 @@ export const UploadBooks = () => {
               ))}
             </Select>
           </div>
-
         </div>
 
         {/* 3rd Row  */}
 
-          <div className="">
-             {/* book Description  */}
-            <div className="mb-2 block ">
-              <Label 
-              htmlFor="bookDescription" 
-              value="Book Description" />
-            </div>
-
-            <Textarea 
-            id="bookDescription"
-            name = "bookDescription"
-            placeholder="Write your book description..." 
-            required rows={6}
-            className="w-full rounded p-3" />
+        <div className="">
+          {/* book Description  */}
+          <div className="mb-2 block ">
+            <Label htmlFor="bookDescription" value="Book Description" />
           </div>
+
+          <Textarea
+            id="bookDescription"
+            name="bookDescription"
+            placeholder="Write your book description..."
+            required
+            rows={6}
+            className="w-full rounded p-3"
+          />
+        </div>
 
         {/* 4th Row  */}
 
         <div>
-        <div className="mb-2 block">
-          <Label 
-          htmlFor="bookPdfUrl" 
-          value="Book Pdf URL" />
+          <div className="mb-2 block">
+            <Label htmlFor="bookPdfUrl" value="Book Pdf URL" />
+          </div>
+          <TextInput
+            id="bookPdfUrl"
+            name="bookPdfUrl"
+            type="text"
+            placeholder="Book Pdf URL"
+            required
+            shadow
+          />
         </div>
-        <TextInput 
-        id="bookPdfUrl" 
-        name="bookPdfUrl"
-        type="text" 
-        placeholder="Book Pdf URL"
-        required shadow />
-      </div>
 
-      <Button type="submit" className="mt-5">Upload Book</Button>
-
+        <Button type="submit" className="mt-5">
+          Upload Book
+        </Button>
       </form>
     </div>
   );

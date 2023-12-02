@@ -49,7 +49,7 @@ export const ManageBooks = () => {
             <Table.Cell>{book.author}</Table.Cell>
             <Table.Cell>{book.category}</Table.Cell>
             <Table.Cell>$29</Table.Cell>
-            <Table.Cell>
+            <Table.Cell className="flex flex-block items-center justify-center">
               <Link
               className="flex flex-block font-medium text-cyan-600 hover-underline dark:text-cyan-500 mr-5"
               to={`/admin/dashboard/edit-books/${book._id}`}>
