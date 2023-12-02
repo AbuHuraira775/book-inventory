@@ -1,53 +1,53 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contects/AuthProvider";
-import google from '../assets/banner-books/google-logo.svg'
+import google from "../assets/banner-books/google-logo.svg";
 
-export const SignUp = () => {
+export const Login = () => {
+  const { login, loginWithGoogle } = useContext(AuthContext);
 
-  const {createUser, loginWithGoogle} = useContext(AuthContext)
+  const [error, setError] = useState("");
 
-  const [error,setError] = useState('error')
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const location = useLocation()
-  const navigate = useNavigate()
+  const from = location.state?.from?.pathname || "/";
 
-  const from = location.state?.from?.pathname || "/"
+  const handleLogin = (event) => {
+    event.preventDefault();
 
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-  const handleRegister = ()=>{
+    console.log(email, password);
 
-    loginWithGoogle().then((result)=>{
-      const user = result.user
-      alert('Sign Up Successfully')
-      navigate(from, {replace: true})
-    }).catch((error)=>{
-      const errorCode = error.code
-      const errorMessage = error.mssage
-      setError(errorMessage)
-    })
+    login(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        alert("Login successfully");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError(errorMessage);
+      });
+  };
 
-  }
-  const handleSignUp = (event) =>{
-    event.preventDefault()
+  const handleRegister = () => {
+    loginWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        alert("Sign Up Successfully");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.mssage;
+      });
+  };
 
-    const form = event.target
-    const email = form.email.value
-    const password = form.password.value
-    
-    createUser(email,password).then((userCredential) => {
-      // Signed up 
-      const user = userCredential.user;
-      alert("Signed Up Successfully")
-      navigate(from, {replace: true})
-     
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      setError(errorMessage)
-     
-    });
-  }
   return (
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
@@ -55,10 +55,13 @@ export const SignUp = () => {
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <div className="max-w-md mx-auto">
             <div>
-              <h1 className="text-2xl font-semibold">Sign Up Form</h1>
+              <h1 className="text-2xl font-semibold">Log In </h1>
             </div>
             <div className="divide-y divide-gray-200">
-              <form onSubmit={handleSignUp} className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+              <form
+                onSubmit={handleLogin}
+                className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7"
+              >
                 <div className="relative">
                   <input
                     id="email"
@@ -77,12 +80,16 @@ export const SignUp = () => {
                     placeholder="Password"
                   />
                 </div>
+                {error ? <p className="text-red-600 text-base">Email or Password is not correct </p> : ""}
                 <p>
-                  If you have an account? <Link to="/login">Login</Link>
+                  If you haven't an account? <Link to="/sign-up">Sign Up</Link>
                 </p>
                 <div className="relative">
-                  <button className="bg-blue-500 text-white rounded-md px-6 py-2">
-                    Sign Up
+                  <button
+                    className="bg-blue-500 text-white rounded-md px-6 py-2"
+                    
+                  >
+                    Log In
                   </button>
                 </div>
               </form>
@@ -91,7 +98,8 @@ export const SignUp = () => {
             <hr />
             <div className="flex w-full items-center flex-col mt-5 gap-3">
               <button onClick={handleRegister} className="block">
-                <img src={google} alt="" className="w-12 h-12 inline-block"/>Login with Google account
+                <img src={google} alt="" className="w-12 h-12 inline-block" />
+                Login with Google account
               </button>
             </div>
           </div>
