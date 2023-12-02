@@ -14,6 +14,7 @@ import { Dashboard } from "../dashboard/Dashboard";
 import { UploadBooks } from "../dashboard/UploadBooks";
 import { ManageBooks } from "../dashboard/ManageBooks";
 import { EditBooks } from "../dashboard/EditBooks";
+import { SignUp } from "../components/SignUp";
 
 const router = createBrowserRouter([
     {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
         },
 
       ]
+    },
+    {
+      path: 'sign-up',
+      element: <SignUp />
     }
   ]);
 
