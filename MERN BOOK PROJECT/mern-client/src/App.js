@@ -1,15 +1,26 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import { RouterProvider } from 'react-router-dom'
-import router from './routers/router.jsx'
-import AuthProvider from './contects/AuthProvider.jsx'
+import React from "react";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-   <AuthProvider>
-   <RouterProvider router={router} />
-   </AuthProvider>
-  </React.StrictMode>,
-)
+
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import { Outlet } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import { MyFooter } from './components/MyFooter'
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <Navbar />
+      <div className='min-h-screen'>
+      <Outlet />
+      </div>
+      <MyFooter />
+    </>
+  )
+}
+
+export default App
