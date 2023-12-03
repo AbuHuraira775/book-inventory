@@ -13,10 +13,7 @@ function Banner() {
                     <span className='text-blue-700'>for the best price</span>    
                 </h2>
                 <p className='md:w-4/5'>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                     A ipsam temporibus ut eligendi debitis iste. Alias doloremque 
-                     dolor nihil, doloribus repellendus placeat consequatur tenetur 
-                     hic voluptatem a vero omnis nostrum.
+                Book reading enhances knowledge, concentration, vocabulary, and mental well-being. It reduces stress, stimulates the mind, and fosters a broader understanding of the world, contributing to both personal and intellectual growth.
                 </p> 
                 <div>
                     <input type="search" name='search' id='search' placeholder='Search a Book'

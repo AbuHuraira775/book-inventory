@@ -86,7 +86,7 @@ export const UploadBooks = () => {
           <div className="lg:w-1/2">
             {/* book title  */}
             <div className="mb-2 block">
-              <Label htmlFor="bookTitle" value="Book Title" />
+              <Label htmlFor="bookTitle" value="Book Title" className="text-base"/>
             </div>
             <TextInput
               id="bookTitle"
@@ -100,7 +100,7 @@ export const UploadBooks = () => {
           <div className="lg:w-1/2">
             {/* author name */}
             <div className="mb-2 block">
-              <Label htmlFor="author" value="Author Name" />
+              <Label htmlFor="author" value="Author Name"  className="text-base"/>
             </div>
             <TextInput
               id="author"
@@ -117,7 +117,7 @@ export const UploadBooks = () => {
           <div className="lg:w-1/2">
             {/* imageUrl  */}
             <div className="mb-2 block">
-              <Label htmlFor="imageUrl" value="Image URL" />
+              <Label htmlFor="imageUrl" value="Image URL" className="text-base" />
             </div>
             <TextInput
               id="imageUrl"
@@ -131,7 +131,7 @@ export const UploadBooks = () => {
           <div className="lg:w-1/2">
             {/* category */}
             <div className="mb-2 block">
-              <Label htmlFor="inputState" value="Book Category" />
+              <Label htmlFor="inputState" value="Book Category" className="text-base" />
             </div>
 
             <Select
@@ -155,7 +155,7 @@ export const UploadBooks = () => {
         <div className="">
           {/* book Description  */}
           <div className="mb-2 block ">
-            <Label htmlFor="bookDescription" value="Book Description" />
+            <Label htmlFor="bookDescription" value="Book Description" className="text-base" />
           </div>
 
           <Textarea
@@ -172,7 +172,7 @@ export const UploadBooks = () => {
 
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="bookPdfUrl" value="Book Pdf URL" />
+            <Label htmlFor="bookPdfUrl" value="Book Pdf URL" className="text-base" />
           </div>
           <TextInput
             id="bookPdfUrl"

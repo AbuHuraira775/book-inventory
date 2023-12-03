@@ -62,18 +62,18 @@ function Navbar() {
 
               {/* className='block text-base 
                       text-black uppercase cursor-poiter hover:text-blue-700' */}
-              <ul className='md:flex space-x-12 '>
+              <ul className='md:flex space-x-12 hidden'>
                 {
                   navItems.map(({link,path})=>
                     <Link key={path} to={path} className='block text-base 
-                    text-black uppercase cursor-poiter hover:text-blue-700'>
+                    text-black  font-medium uppercase cursor-poiter hover:text-blue-700'>
                       {link}</Link>)
                 }
               </ul>
 
               {/* menu button for large devices */}
-              <div className='space-x-12 lg:felx items-center'>
-                <button><FaBarsStaggered className='w-5 hover:text-blue-700 '/></button>
+              <div className='space-x-12 lg:felx items-center md:hidden'>
+                {/* <button><FaBarsStaggered className='w-5 hover:text-blue-700 '/></button> */}
               </div>
 
               {/* menu button for mobile devices */}
@@ -88,8 +88,8 @@ function Navbar() {
               </div>
 
               {/* menu button for sm devices */}
-                  <div className={`space-y-4 px-4 mt-16 py-7 bg-blue-700 ${isMenuOpen?
-                  "block fixed top-0 right-0 left-0": "hidden"}`}>
+                  <div className={`space-y-4 px-4 mt-16 py-7 bg-teal-500 ${isMenuOpen?
+                  "block fixed top-0 right-0 left-0  font-medium": "hidden"}`}>
                     {
                         navItems.map(({link,path})=>
                           <Link key={path} to={path} className='block text-base 
