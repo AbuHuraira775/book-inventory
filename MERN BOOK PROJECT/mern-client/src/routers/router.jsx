@@ -53,7 +53,7 @@ const router = createBrowserRouter([
       children: [
         {
           path: '/admin/dashboard',
-          element: <PrivateRoute><UploadBooks /></PrivateRoute>,
+          element: <PrivateRoute><ManageBooks /></PrivateRoute>,
         },
         {
           path: '/admin/dashboard/upload',
